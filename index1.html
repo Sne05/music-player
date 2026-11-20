@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #10131c;
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .music-card {
+            width: 380px;
+            height: 180px;
+            background: linear-gradient(135deg, #292e43, #171b2b);
+            border-radius: 20px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .music-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            color: white;
+        }
+
+        .music-info span {
+            color: #a5a9bd;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .music-info h2 {
+            font-size: 23px;
+            max-width: 190px;
+        }
+
+        .music-info p {
+            color: #a5a9bd;
+            font-size: 14px;
+        }
+
+        .play-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #a78bfa;
+            color: #171b2b;
+            font-size: 19px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .album {
+            width: 140px;
+            height: 140px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+    <audio src="music1.mp3" controls style="position: absolute; top: -200px;" id="player1"></audio>
+    <center>
+    <div class="music-card" style="margin-top: 20px;">
+
+        <div class="music-info">
+            <h2>Sawan Aaya Hai</h2>
+            <p>Himesh Reshammiya,Keshav Anand,Mayur Puri,<br> Shreya Ghoshal</p>
+            <button class="play-btn" onclick="PlayOrPause(1)">▶</button>
+        </div>
+        <img class="album"
+             src="Saawan-Aaya-Hai-From-Yeh-Prem-Mol-Liya-Hindi-2026-20261030013555-500x500.jpg"
+             alt="Album Cover">
+    </div>
+    <audio src="music2.mp3" controls style="position: absolute; top:-200px;" id="player2"></audio>
+     <div class="music-card" style="margin-top: 20px;">
+
+        <div class="music-info">
+            <h2>Ichak Dana</h2>
+            <p>Javed Ali, Neeti Mohan</p>
+            <button class="play-btn" onclick="PlayOrPause(2)">▶</button>
+        </div>
+        <img class="album"
+             src="Ichak-Dana-From-Meethe-Mein-Kya-Hai-Hindi-2026-20261014084025-500x500.jpg"
+             alt="Album Cover">
+    </div>
+    <audio src="music3.mp3" controls style="position:absolute; top:-200px;" id="player3"></audio>
+     <div class="music-card" style="margin-top: 20px;">
+
+        <div class="music-info">
+            <h2>Main Ram</h2>
+            <p>Gayathri, K M Radha Krishnan, Veturi</p>
+            <button class="play-btn" onclick="PlayOrPause(3)">▶</button>
+        </div>
+        <img class="album"
+             src="Main-Ram-From-Ramayana-Hindi-2026-20261026191010-500x500.jpg"
+             alt="Album Cover">
+    </div>
+    <audio src="music4.mp3" controls style="position:absolute; top:-200px;" id="player4"></audio>
+     <div class="music-card" style="margin-top: 20px;">
+
+        <div class="music-info">
+            <h2>Ghar Lagda</h2>
+            <p>Aniket Shukla, Garvit Soni, Prateeksha Srivastava, <br>Priyansh Srivastava</p>
+            <button class="play-btn" onclick="PlayOrPause(4)">▶</button>
+        </div>
+        <img class="album"
+             src="Ghar-Lagda-From-Dilwali-Diwali-Hindi-2026-20261029111101-500x500.jpg"
+             alt="Album Cover">
+    </div>
+     <audio src="music5.mp3" controls style="position:absolute; top:-200px;" id="player5"></audio>
+     <div class="music-card" style="margin-top: 20px;">
+
+        <div class="music-info">
+            <h2>Tu Mil Jaaye</h2>
+            <p>Arijit Singh, Ed Sheeran, Kumaar, Madhubanti Bagchi,<br> Sachin-Jigar</p>
+            <button class="play-btn" onclick="PlayOrPause(5)">▶</button>
+        </div>
+        <img class="album"
+             src="Tu-Mil-Jaaye-From-KING-Hindi-2026-20261031131042-500x500.jpg"
+             alt="Album Cover">
+    </div>
+    </center>
+    <script>
+        let isplaying = false
+        function PlayOrPause(num){
+            if (isplaying){
+                document.getElementById("player1").pause();
+                document.getElementById("player2").pause();
+                document.getElementById("player3").pause();
+                document.getElementById("player4").pause();
+                document.getElementById("player5").pause();
+                isplaying=false
+                return 0;
+            }
+            if(num==1){
+                document.getElementById("player1").src = "music1.mp3";
+                document.getElementById("player1").play();
+                isplaying = true;
+            }
+            if(num==2){
+                document.getElementById("player2").src= "music2.mp3";
+                document.getElementById("player2").play();
+                isplaying = true;
+            }
+            if(num==3){
+                document.getElementById("player3").src= "music3.mp3";
+                document.getElementById("player3").play();
+                isplaying = true;
+            }
+            if(num==4){
+                document.getElementById("player4").src= "music4.mp3";
+                document.getElementById("player4").play();
+                isplaying = true;
+            }
+            if(num==5){
+                document.getElementById("player5").src= "music5.mp3";
+                document.getElementById("player5").play();
+                isplaying = true;
+            }
+        }
+    </script>
+</body>
+</html>
